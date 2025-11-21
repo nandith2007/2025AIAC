@@ -1,0 +1,179 @@
+/* styles.css
+AI-suggested color palette & typography:
+- Palette (Calm Professional):
+    --color-primary: #0F172A (Rich Indigo)
+    --color-accent:  #0066FF (Bright Blue)
+    --color-muted:   #6B7280 (Cool Gray)
+    --color-bg:      #F8FAFC (Off-white)
+    --color-card:    #FFFFFF (Card background)
+Typography:
+- Sans for UI: Inter (400/600)
+- Serif for headings: Merriweather (400/700)
+*/
+
+/* CSS variables */
+:root{
+    --color-primary: #0F172A;
+    --color-accent:  #0066FF;
+    --color-muted:   #6B7280;
+    --color-bg:      #F8FAFC;
+    --color-card:    #FFFFFF;
+    --radius: 12px;
+    --gap: 1.25rem;
+    --max-width: 1100px;
+    --elev: 0 6px 18px rgba(15,23,42,0.08);
+    --text: #0b1220;
+    --muted: #475569;
+    --accent-contrast: #fff;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color-scheme: light;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    background:var(--color-bg);
+    color:var(--text);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* Layout container */
+.container{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Header */
+.site-header{
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+    position: sticky;
+    top:0;
+    z-index: 40;
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(15,23,42,0.04);
+}
+.header-inner{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    padding:0.75rem 0;
+}
+.logo{
+    font-weight:700;
+    color:var(--color-primary);
+    text-decoration:none;
+    font-size:1.125rem;
+}
+.nav{
+    margin-left:auto;
+    display:flex;
+    gap:0.75rem;
+    align-items:center;
+}
+.nav-link{
+    color:var(--muted);
+    text-decoration:none;
+    padding:0.45rem 0.6rem;
+    border-radius:8px;
+}
+.nav-link:hover, .nav-link.active{
+    background:rgba(0,102,255,0.08);
+    color:var(--color-primary);
+}
+
+/* Mobile nav toggle */
+.nav-toggle{
+    display:none;
+    background:transparent;
+    border:0;
+    font-size:1.25rem;
+}
+
+/* Sections */
+.section{
+    padding:2.25rem 0;
+}
+
+/* About */
+.about-grid{
+    display:grid;
+    gap:var(--gap);
+    align-items:center;
+    grid-template-columns: 1fr;
+}
+.about-photo{display:flex;justify-content:center}
+.avatar{
+    width:160px;height:160px;border-radius:50%;
+    background:linear-gradient(135deg,var(--color-accent),#8b5cf6);
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent-contrast);
+    box-shadow:var(--elev);
+    font-size:2rem;
+}
+
+/* Projects Grid using CSS Grid */
+.projects-grid{
+    display:grid;
+    gap:1rem;
+    grid-template-columns: 1fr;
+}
+/* Card */
+.card{
+    background:var(--color-card);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--elev);
+    display:flex;
+    flex-direction:column;
+}
+.card-media{
+    height:160px;
+    background-size:cover;
+    background-position:center;
+}
+.card-body{padding:1rem}
+.card-actions{display:flex;gap:0.5rem;align-items:center;margin-top:0.75rem}
+.btn{
+    display:inline-block;padding:0.45rem 0.8rem;border-radius:8px;background:transparent;border:1px solid rgba(15,23,42,0.06);text-decoration:none;color:var(--color-primary);font-weight:600;
+}
+.btn.primary{background:var(--color-accent);color:var(--accent-contrast);border:0}
+
+/* Contact */
+.contact-grid{
+    display:grid;
+    gap:1rem;
+    grid-template-columns: 1fr;
+}
+.contact-form{display:flex;flex-direction:column;gap:0.75rem}
+.contact-form label{display:flex;flex-direction:column;gap:0.35rem;font-size:0.95rem;color:var(--muted)}
+.contact-form input, .contact-form textarea{
+    padding:0.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:white;
+}
+
+/* Footer */
+.site-footer{padding:1.25rem 0;color:var(--muted);font-size:0.9rem;border-top:1px solid rgba(15,23,42,0.04);background:transparent}
+.site-footer a{color:var(--color-accent);text-decoration:none}
+
+/* Responsive rules */
+@media (min-width: 720px){
+    .about-grid{grid-template-columns: 1fr 300px}
+    .projects-grid{grid-template-columns: repeat(2, 1fr)}
+    .contact-grid{grid-template-columns: 1fr 300px}
+    .nav-toggle{display:none}
+}
+
+@media (min-width: 1100px){
+    .projects-grid{grid-template-columns: repeat(3, 1fr)}
+    .nav{display:flex}
+}
+
+/* small screens */
+@media (max-width:719px){
+    .nav{display:none}
+    .nav-toggle{display:block;margin-left:auto}
+}
